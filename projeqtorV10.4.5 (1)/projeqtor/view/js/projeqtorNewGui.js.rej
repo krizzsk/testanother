@@ -1,0 +1,8 @@
+@@ -398,6 +398,7 @@
+           })
+           
+         ]).play();
++          setTimeout("dijit.byId('contentDetailDiv').resize();",duration+50);
+       }else{
+           dojox.fx.combine([ dojox.fx.animateProperty({
+             node : "menuTop",

@@ -1,0 +1,15 @@
+@@ -463,12 +464,13 @@
+ 		$line["validateddurationdisplay"]=(isset($line["validatedduration"]))?Work::displayWorkWithUnit($line["validatedduration"]):'-';
+ 		if (floatval($line['plannedwork'])==0 and pq_trim($line['plannedstartdate'])=='' and pq_trim($line['peplannedstart'])!='') { $line['plannedstartdate']=$line['peplannedstart'];}
+ 		if (floatval($line['plannedwork'])==0 and pq_trim($line['plannedenddate'])=='' and pq_trim($line['peplannedend'])!='') { $line['plannedenddate']=$line['peplannedend'];}
+-		if ($columnsDescription['IdStatus']['show']==1 or $columnsDescription['Type']['show']==1) {
++		if ($columnsDescription['IdStatus']['show']==1 or $columnsDescription['Type']['show']==1 or $columnsDescription['Resource']['show']==1) {
+ 		  $ref=$line['reftype'];
+ 		  $type='id'.$ref.'Type';
+ 		  $item=new $ref($line['refid'],true);
+       $line["status"]=(property_exists($item,'idStatus'))?SqlList::getNameFromId('Status',$item->idStatus)."#split#".SqlList::getFieldFromId('Status',$item->idStatus,'color'):null;
+       $line["type"]=(property_exists($item,$type))?SqlList::getNameFromId('Type',$item->$type):null;
++      $line["resource"]=(property_exists($item,'idResource'))?SqlList::getNameFromId('ResourceAll',$item->idResource):null;
+ 		}
+ 		if ($line['reftype']=='Meeting' and $line['topreftype']=='PeriodicMeeting') {
+ 		  // topid from query

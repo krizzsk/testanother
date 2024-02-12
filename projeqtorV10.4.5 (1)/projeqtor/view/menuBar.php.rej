@@ -1,0 +1,9 @@
+@@ -375,7 +375,7 @@
+        </div>
+     </td>
+     <?php }?>
+-    <?php if($profile == 'ADM'){
++    <?php if(securityCheckDisplayMenu(null,'Admin')){
+      $cronStatus = pq_ucfirst(Cron::check());
+      ?>
+      <?php drawSeparator();?>
